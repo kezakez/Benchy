@@ -11,7 +11,12 @@ namespace Benchy.Tests
         {
             var target = new Settings();
             string result;
-            target.ProcessParameters(new[] {@"-benchmarkdll:""MyDLL.dll""", @"-outputdirectory:""c:\test\output\""", @"-buildlabel:""testlabel""", @"-benchmarkmethod:""benchname"""}, out result);
+            target.ProcessParameters(
+                new[]
+                    {
+                        @"-benchmarkdll:""MyDLL.dll""", @"-outputdirectory:""c:\test\output\""",
+                        @"-buildlabel:""testlabel""", @"-benchmarkmethod:""benchname"""
+                    }, out result);
 
             Assert.AreEqual("MyDLL.dll", target.BenchmarkDll);
             Assert.AreEqual("benchname", target.BenchmarkMethod);
@@ -24,7 +29,7 @@ namespace Benchy.Tests
         {
             var target = new Settings();
             string errors;
-            var result = target.ProcessParameters(new[] { @"-label:""testlabel""" }, out errors);
+            bool result = target.ProcessParameters(new[] {@"-label:""testlabel"""}, out errors);
 
             Assert.AreEqual(false, result);
         }
@@ -34,10 +39,9 @@ namespace Benchy.Tests
         {
             var target = new Settings();
             string errors;
-            var result = target.ProcessParameters(new[] { @"-benchmarkdll:""test.dll""" }, out errors);
+            bool result = target.ProcessParameters(new[] {@"-benchmarkdll:""test.dll"""}, out errors);
 
             Assert.AreEqual(false, result);
         }
-
     }
 }

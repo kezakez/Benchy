@@ -3,9 +3,9 @@ using Benchy;
 
 namespace PEL.Benchmark
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             // get the settings
             var settings = new Settings();
@@ -15,7 +15,8 @@ namespace PEL.Benchmark
             if (success)
             {
                 // load up the required assembly and run the benchmarks and output the results
-                var executer = new BenchmarkExecuter(settings, new AssemblyInterrogator(settings.BenchmarkDll), outputWriter, new ProcessStarterFactory());
+                var executer = new BenchmarkExecuter(settings, new AssemblyInterrogator(settings.BenchmarkDll),
+                                                     outputWriter, new ProcessStarterFactory());
                 if (executer.RunBenchmarks(out errors))
                 {
                     return;

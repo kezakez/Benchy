@@ -1,13 +1,22 @@
 using System;
+using System.Threading;
 using Benchy.Framework;
 
 namespace Benchy.Tests
 {
     [BenchmarkFixture]
-    public class TestBenchmarkClass
+    public class TestBenchmarkClass1
     {
         public bool SetUpCalled { get; set; }
         public bool SetUpThrowException { get; set; }
+
+        public bool TearDownCalled { get; set; }
+        public bool TearDownThrowException { get; set; }
+
+        public bool TestBenchy1Called { get; set; }
+
+        public bool TestBenchy2Called { get; set; }
+        public bool TestBenchy2ThrowException { get; set; }
 
         [SetUp]
         public void SetupData()
@@ -19,9 +28,6 @@ namespace Benchy.Tests
             }
         }
 
-        public bool TearDownCalled { get; set; }
-        public bool TearDownThrowException { get; set; }
-
         [TearDown]
         public void TearDownData()
         {
@@ -32,23 +38,18 @@ namespace Benchy.Tests
             }
         }
 
-        public bool TestBenchy1Called { get; set; } 
-
         [Benchmark]
         public void TestBenchy1()
         {
             TestBenchy1Called = true;
-            System.Threading.Thread.Sleep(200);
+            Thread.Sleep(200);
         }
-
-        public bool TestBenchy2Called { get; set; }
-        public bool TestBenchy2ThrowException { get; set; }
 
         [Benchmark]
         public void TestBenchy2()
         {
             TestBenchy2Called = true;
-            System.Threading.Thread.Sleep(300);
+            Thread.Sleep(300);
             if (TestBenchy2ThrowException)
             {
                 throw new Exception();

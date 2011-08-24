@@ -1,23 +1,31 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 
 namespace Benchy
 {
     public class OutputWriter
     {
-        public OutputWriter() { }
+        private readonly IStreamFactory _streamFactory;
 
-        public OutputWriter(string directory) : this(directory, new StreamFactory()) { }
+        public OutputWriter()
+        {
+        }
 
-        private IStreamFactory _streamFactory;
+        public OutputWriter(string directory) : this(directory, new StreamFactory())
+        {
+        }
+
         public OutputWriter(string directory, IStreamFactory streamFactory)
         {
             OutputDirectory = directory;
             _streamFactory = streamFactory;
         }
 
+        public string OutputDirectory { get; private set; }
+
         public virtual void WriteResults(string benchmarkName, string buildLabel, long benchmarkMilliseconds)
         {
-            var fileName = Path.Combine(OutputDirectory, benchmarkName + ".json");
+            string fileName = Path.Combine(OutputDirectory, benchmarkName + ".json");
             Stream stream = _streamFactory.GetStream(fileName);
 
             string resultString = @"[""" + buildLabel + @""", " + benchmarkMilliseconds + @"]";
@@ -48,11 +56,11 @@ namespace Benchy
 
         public virtual void WriteError(string error, string benchmarkName = "", string buildLabel = "")
         {
-            System.Console.WriteLine(error);
+            Console.WriteLine(error);
 
             if (!string.IsNullOrWhiteSpace(benchmarkName))
             {
-                var fileName = Path.Combine(OutputDirectory, benchmarkName + "-errors.txt");
+                string fileName = Path.Combine(OutputDirectory, benchmarkName + "-errors.txt");
                 File.AppendAllText(fileName, buildLabel + "\r\n" + error);
             }
         }
@@ -82,16 +90,18 @@ namespace Benchy
             }
             return -1;
         }
-
-        public string OutputDirectory { get; private set; }
     }
 
     public class StreamFactory : IStreamFactory
     {
+        #region IStreamFactory Members
+
         public Stream GetStream(string fileName)
         {
             return new FileStream(fileName, FileMode.OpenOrCreate, FileAccess.ReadWrite);
         }
+
+        #endregion
     }
 
     public interface IStreamFactory

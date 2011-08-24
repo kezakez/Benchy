@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Benchy.Framework", "Benchy.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Benchy.Tests", "Benchy.Tests\Benchy.Tests.csproj", "{BD786AAF-6BA6-407E-B281-1693F9887D96}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Benchy.Results", "Benchy.Results\Benchy.Results.csproj", "{0491F57D-4F3C-441A-B74E-2D5999B8435D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +27,10 @@ Global
 		{BD786AAF-6BA6-407E-B281-1693F9887D96}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BD786AAF-6BA6-407E-B281-1693F9887D96}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BD786AAF-6BA6-407E-B281-1693F9887D96}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0491F57D-4F3C-441A-B74E-2D5999B8435D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0491F57D-4F3C-441A-B74E-2D5999B8435D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0491F57D-4F3C-441A-B74E-2D5999B8435D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0491F57D-4F3C-441A-B74E-2D5999B8435D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -14,7 +14,7 @@ namespace Benchy.Tests
             streamFactory.Setup(s => s.GetStream("c:\\dir\\testname.json")).Returns(memoryStream);
 
             var target = new OutputWriter("c:\\dir", streamFactory.Object);
-            target.WriteResults("testname", "label" , 42);
+            target.WriteResults("testname", "label", 42);
 
             Assert.AreEqual(@"{ ""benchmarkname"": ""testname"", ""data"": [[""label"", 42]] }", memoryStream.Contents);
         }
@@ -35,11 +35,16 @@ namespace Benchy.Tests
             target.WriteResults("testname", "label", 40);
 
 
-            Assert.AreEqual(@"{ ""benchmarkname"": ""testname"", ""data"": [[""label"", 42], [""label"", 40]] }", memoryStream.Contents);
+            Assert.AreEqual(@"{ ""benchmarkname"": ""testname"", ""data"": [[""label"", 42], [""label"", 40]] }",
+                            memoryStream.Contents);
         }
+
+        #region Nested type: TestStreamContents
 
         public class TestStreamContents : MemoryStream
         {
+            public string Contents { get; set; }
+
             public override void Close()
             {
                 Position = 0;
@@ -48,8 +53,8 @@ namespace Benchy.Tests
 
                 base.Close();
             }
-
-            public string Contents { get; set; }
         }
+
+        #endregion
     }
 }

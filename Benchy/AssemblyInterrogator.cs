@@ -1,12 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Reflection;
+using Benchy.Framework;
 
 namespace Benchy
 {
     public class AssemblyInterrogator
     {
-        public AssemblyInterrogator() { }
+        private List<object> _itemsToBench = new List<object>();
+
+        public AssemblyInterrogator()
+        {
+        }
 
         public AssemblyInterrogator(string assemblyName)
         {
@@ -15,8 +20,11 @@ namespace Benchy
 
         public virtual string AssemblyName { get; private set; }
 
-        private List<object> _itemsToBench = new List<object>();
-        public virtual List<object> ItemsToBench { get { return _itemsToBench; } set { _itemsToBench = value; } }
+        public virtual List<object> ItemsToBench
+        {
+            get { return _itemsToBench; }
+            set { _itemsToBench = value; }
+        }
 
         public virtual bool PopulateItemsToBench(out string result)
         {
@@ -25,14 +33,14 @@ namespace Benchy
                 AssemblyName name = System.Reflection.AssemblyName.GetAssemblyName(AssemblyName);
                 Assembly assembly = Assembly.Load(name.FullName);
                 Type[] types = assembly.GetTypes();
-                foreach (var type in types)
+                foreach (Type type in types)
                 {
-                    var attributes = type.GetCustomAttributes(true);
-                    foreach (var attribute in attributes)
+                    object[] attributes = type.GetCustomAttributes(true);
+                    foreach (object attribute in attributes)
                     {
-                        if (attribute.GetType() == typeof(Framework.BenchmarkFixtureAttribute))
+                        if (attribute.GetType() == typeof (BenchmarkFixtureAttribute))
                         {
-                            var benchObject = assembly.CreateInstance(type.FullName);
+                            object benchObject = assembly.CreateInstance(type.FullName);
                             ItemsToBench.Add(benchObject);
                         }
                     }

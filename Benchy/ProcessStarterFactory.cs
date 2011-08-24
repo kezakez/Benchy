@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Reflection;
 
 namespace Benchy
@@ -9,9 +10,9 @@ namespace Benchy
         {
             try
             {
-                var runningAssembly = Assembly.GetEntryAssembly();
-                var processName = runningAssembly.ManifestModule.FullyQualifiedName;
-                var process = System.Diagnostics.Process.Start(processName, arguments);
+                Assembly runningAssembly = Assembly.GetEntryAssembly();
+                string processName = runningAssembly.ManifestModule.FullyQualifiedName;
+                Process process = Process.Start(processName, arguments);
                 if (process != null)
                 {
                     result = "Started " + processName + " " + arguments;

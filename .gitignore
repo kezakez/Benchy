@@ -1,0 +1,14 @@
+
+/Benchy/bin
+/Benchy/obj
+/_ReSharper.benchy
+/benchmarks
+/Benchy.Framework/bin
+/Benchy.Framework/obj
+/Benchy.Tests/bin
+/Benchy.Tests/obj
+/Benchy.Results/obj
+/Benchy.Results/bin
+*.snk
+*.suo
+*.user

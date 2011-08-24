@@ -4,6 +4,18 @@ namespace PEL.Benchmark
 {
     public class Settings
     {
+        public string BuildLabel { get; set; }
+
+        public string BenchmarkDll { get; set; }
+
+        public string BenchmarkClass { get; set; }
+
+        public string BenchmarkMethod { get; set; }
+
+        public string OutputDirectory { get; set; }
+
+        public bool Pause { get; set; }
+
         public bool ProcessParameters(string[] args, out string result)
         {
             BenchmarkMethod = string.Empty;
@@ -13,16 +25,17 @@ namespace PEL.Benchmark
 
             if (args.Length == 0)
             {
-                result = @"Benchy.exe -benchmarkdll:""YourAssembly.dll"" -buildlabel:""build42"" [-benchmarkmethod:""MethodNameMarkedWithBenchmarkAttribute""] [-outputdirectory:""c:\buildoutput""] [-pause]";
+                result =
+                    @"Benchy.exe -benchmarkdll:""YourAssembly.dll"" -buildlabel:""build42"" [-benchmarkmethod:""MethodNameMarkedWithBenchmarkAttribute""] [-outputdirectory:""c:\buildoutput""] [-pause]";
                 return false;
             }
 
-            foreach (var arg in args)
+            foreach (string arg in args)
             {
-                var sep = arg.IndexOf(':');
+                int sep = arg.IndexOf(':');
 
                 string key;
-                var value = string.Empty;
+                string value = string.Empty;
 
                 if (sep != -1)
                 {
@@ -39,11 +52,14 @@ namespace PEL.Benchmark
 
                 switch (key)
                 {
+                    case "buildlabel":
+                        BuildLabel = value;
+                        break;
                     case "benchmarkdll":
                         BenchmarkDll = value;
                         break;
-                    case "buildlabel":
-                        BuildLabel = value;
+                    case "benchmarkclass":
+                        BenchmarkClass = value;
                         break;
                     case "benchmarkmethod":
                         BenchmarkMethod = value;
@@ -72,25 +88,17 @@ namespace PEL.Benchmark
             return true;
         }
 
-        public string WriteParameterString(string benchmarkMethod = "")
+        public string WriteParameterString(string benchmarkClass, string benchmarkMethod)
         {
-            var outMethodName = (!string.IsNullOrWhiteSpace(benchmarkMethod)) ? benchmarkMethod : BenchmarkMethod;
-            var result = string.Format("-benchmarkdll:\"{0}\" -buildlabel:\"{1}\" -benchmarkmethod:\"{2}\" -outputdirectory:\"{3}\"", BenchmarkDll, BuildLabel, outMethodName, OutputDirectory);
+            string result =
+                string.Format(
+                    "-buildlabel:\"{0}\" -benchmarkdll:\"{1}\" -benchmarkclass:\"{2}\" -benchmarkmethod:\"{3}\" -outputdirectory:\"{4}\"",
+                    BuildLabel, BenchmarkDll, benchmarkClass, benchmarkMethod, OutputDirectory);
             if (Pause)
             {
                 result += result + " -pause";
             }
             return result;
         }
-
-        public string BuildLabel { get; set; }
-
-        public string BenchmarkDll { get; set; }
-
-        public string BenchmarkMethod { get; set; }
-
-        public string OutputDirectory { get; set; }
-
-        public bool Pause { get; set; }
     }
 }

@@ -1,0 +1,23 @@
+﻿@model Benchy.Results.Models.Projects
+
+@{
+    ViewBag.Title = "Index.cshtml";
+}
+
+<h2>Index.cshtml</h2>
+
+<table>
+    <tr>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model.ProjectItems) {
+    <tr>
+        <td>
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+        </td>
+    </tr>
+}
+
+</table>
+
