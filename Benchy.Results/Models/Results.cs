@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 
 namespace Benchy.Results.Models
 {
@@ -29,6 +26,14 @@ namespace Benchy.Results.Models
                 projectItem.Load();
                 ProjectItems.Add(projectItem);
             }
+        }
+
+        public Benchmark FindItem(string projId, string testId)
+        {
+            var project = this.ProjectItems.Find(item => item.Name == projId);
+            var testItem = project.BenchmarkItems.Find(item => item.Name == testId);
+
+            return testItem;
         }
     }
 }

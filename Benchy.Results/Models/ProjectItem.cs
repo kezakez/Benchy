@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 
 namespace Benchy.Results.Models
 {
@@ -16,8 +13,8 @@ namespace Benchy.Results.Models
         public string Directory { get; set; }
         public string Name { get; set; }
 
-        private List<BenchmarkItem> _benchmarkItems = new List<BenchmarkItem>();
-        public List<BenchmarkItem> BenchmarkItems
+        private List<Benchmark> _benchmarkItems = new List<Benchmark>();
+        public List<Benchmark> BenchmarkItems
         {
             get { return _benchmarkItems; }
             set { _benchmarkItems = value; }
@@ -31,7 +28,12 @@ namespace Benchy.Results.Models
             FileInfo[] files = directory.GetFiles();
             foreach (var file in files)
             {
-                BenchmarkItems.Add(new BenchmarkItem(file.FullName));
+                var item = new Benchmark
+                               {
+                                   Name = Path.GetFileNameWithoutExtension(file.FullName),
+                                   Data = File.ReadAllText(file.FullName)
+                               };
+                BenchmarkItems.Add(item);
             }
         }
     }

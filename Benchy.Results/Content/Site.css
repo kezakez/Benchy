@@ -6,6 +6,17 @@ body
     background-color: #fff;
 }
 
+/* flot */
+
+.xAxis>.tickLabel
+{
+    -webkit-transform: translate(0,40px) rotate(-90deg);
+    -moz-transform: translate(0,40px) rotate(-90deg);
+    -ms-transform: translate(0,40px) rotate(-90deg);
+    -o-transform: translate(0,40px) rotate(-90deg);
+    transform: translate(0,40px) rotate(-90deg);
+}
+
 /* Styles for basic forms
 -----------------------------------------------------------*/
 

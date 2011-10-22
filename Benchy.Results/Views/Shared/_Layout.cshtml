@@ -3,7 +3,9 @@
 <head>
     <title>@ViewBag.Title</title>
     <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
-    <script src="@Url.Content("~/Scripts/jquery-1.4.4.min.js")" type="text/javascript"></script>
+    <!--[if lte IE 8]><script language="javascript" type="text/javascript" src="~/Content/flot/excanvas.min.js"></script><![endif]--> 
+    <script language="javascript" type="text/javascript" src="@Url.Content("~/Content/flot/jquery.js")"></script> 
+    <script language="javascript" type="text/javascript" src="@Url.Content("~/Content/flot/jquery.flot.js")"></script> 
 </head>
 
 <body>

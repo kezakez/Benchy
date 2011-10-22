@@ -62,53 +62,87 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\BenchmarkItem.cs" />
+    <Compile Include="Models\Benchmark.cs" />
     <Compile Include="Models\ProjectItem.cs" />
     <Compile Include="Models\Results.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\flot\API.txt" />
+    <Content Include="Content\flot\examples\ajax.html" />
+    <Content Include="Content\flot\examples\annotating.html" />
+    <Content Include="Content\flot\examples\arrow-down.gif" />
+    <Content Include="Content\flot\examples\arrow-left.gif" />
+    <Content Include="Content\flot\examples\arrow-right.gif" />
+    <Content Include="Content\flot\examples\arrow-up.gif" />
+    <Content Include="Content\flot\examples\basic.html" />
+    <Content Include="Content\flot\examples\graph-types.html" />
+    <Content Include="Content\flot\examples\hs-2004-27-a-large_web.jpg" />
+    <Content Include="Content\flot\examples\image.html" />
+    <Content Include="Content\flot\examples\index.html" />
+    <Content Include="Content\flot\examples\interacting-axes.html" />
+    <Content Include="Content\flot\examples\interacting.html" />
+    <Content Include="Content\flot\examples\layout.css" />
+    <Content Include="Content\flot\examples\multiple-axes.html" />
+    <Content Include="Content\flot\examples\navigate.html" />
+    <Content Include="Content\flot\examples\percentiles.html" />
+    <Content Include="Content\flot\examples\pie.html" />
+    <Content Include="Content\flot\examples\realtime.html" />
+    <Content Include="Content\flot\examples\resize.html" />
+    <Content Include="Content\flot\examples\selection.html" />
+    <Content Include="Content\flot\examples\setting-options.html" />
+    <Content Include="Content\flot\examples\stacking.html" />
+    <Content Include="Content\flot\examples\symbols.html" />
+    <Content Include="Content\flot\examples\thresholding.html" />
+    <Content Include="Content\flot\examples\time.html" />
+    <Content Include="Content\flot\examples\tracking.html" />
+    <Content Include="Content\flot\examples\turning-series.html" />
+    <Content Include="Content\flot\examples\visitors.html" />
+    <Content Include="Content\flot\examples\zooming.html" />
+    <Content Include="Content\flot\excanvas.js" />
+    <Content Include="Content\flot\excanvas.min.js" />
+    <Content Include="Content\flot\FAQ.txt" />
+    <Content Include="Content\flot\jquery.colorhelpers.js" />
+    <Content Include="Content\flot\jquery.colorhelpers.min.js" />
+    <Content Include="Content\flot\jquery.flot.crosshair.js" />
+    <Content Include="Content\flot\jquery.flot.crosshair.min.js" />
+    <Content Include="Content\flot\jquery.flot.fillbetween.js" />
+    <Content Include="Content\flot\jquery.flot.fillbetween.min.js" />
+    <Content Include="Content\flot\jquery.flot.image.js" />
+    <Content Include="Content\flot\jquery.flot.image.min.js" />
+    <Content Include="Content\flot\jquery.flot.js" />
+    <Content Include="Content\flot\jquery.flot.min.js" />
+    <Content Include="Content\flot\jquery.flot.navigate.js" />
+    <Content Include="Content\flot\jquery.flot.navigate.min.js" />
+    <Content Include="Content\flot\jquery.flot.pie.js" />
+    <Content Include="Content\flot\jquery.flot.pie.min.js" />
+    <Content Include="Content\flot\jquery.flot.resize.js" />
+    <Content Include="Content\flot\jquery.flot.resize.min.js" />
+    <Content Include="Content\flot\jquery.flot.selection.js" />
+    <Content Include="Content\flot\jquery.flot.selection.min.js" />
+    <Content Include="Content\flot\jquery.flot.stack.js" />
+    <Content Include="Content\flot\jquery.flot.stack.min.js" />
+    <Content Include="Content\flot\jquery.flot.symbol.js" />
+    <Content Include="Content\flot\jquery.flot.symbol.min.js" />
+    <Content Include="Content\flot\jquery.flot.threshold.js" />
+    <Content Include="Content\flot\jquery.flot.threshold.min.js" />
+    <Content Include="Content\flot\jquery.js" />
+    <Content Include="Content\flot\jquery.min.js" />
+    <Content Include="Content\flot\LICENSE.txt" />
+    <Content Include="Content\flot\NEWS.txt" />
+    <Content Include="Content\flot\PLUGINS.txt" />
+    <Content Include="Content\flot\README.txt" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Content\themes\base\jquery-ui.css" />
-    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
-    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
-    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
-    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
-    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
-    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
-    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
-    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
-    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
-    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
-    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
-    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
-    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Scripts\jquery-1.4.4.js" />
-    <Content Include="Scripts\jquery-1.4.4.min.js" />
-    <Content Include="Scripts\jquery-1.4.4-vsdoc.js" />
-    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
-    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
-    <Content Include="Scripts\jquery.validate.js" />
-    <Content Include="Scripts\jquery.validate.min.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Scripts\jquery.validate-vsdoc.js" />
-    <Content Include="Scripts\jquery-ui.js" />
-    <Content Include="Scripts\jquery-ui.min.js" />
-    <Content Include="Scripts\MicrosoftAjax.js" />
-    <Content Include="Scripts\MicrosoftAjax.debug.js" />
-    <Content Include="Scripts\MicrosoftMvcAjax.js" />
-    <Content Include="Scripts\MicrosoftMvcAjax.debug.js" />
-    <Content Include="Scripts\MicrosoftMvcValidation.js" />
-    <Content Include="Scripts\MicrosoftMvcValidation.debug.js" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
@@ -116,6 +150,23 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Home\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Scripts\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\Details.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Content\flot\examples\data-eu-gdp-growth-1.json" />
+    <None Include="Content\flot\examples\data-eu-gdp-growth-2.json" />
+    <None Include="Content\flot\examples\data-eu-gdp-growth-3.json" />
+    <None Include="Content\flot\examples\data-eu-gdp-growth-4.json" />
+    <None Include="Content\flot\examples\data-eu-gdp-growth-5.json" />
+    <None Include="Content\flot\examples\data-eu-gdp-growth.json" />
+    <None Include="Content\flot\examples\data-japan-gdp-growth.json" />
+    <None Include="Content\flot\examples\data-usa-gdp-growth.json" />
+    <None Include="Content\flot\Makefile" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

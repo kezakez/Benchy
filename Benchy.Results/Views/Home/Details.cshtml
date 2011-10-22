@@ -1,0 +1,36 @@
+﻿@model Benchy.Results.Models.Benchmark
+
+@{
+    ViewBag.Title = Model.Name + " Benchmark Results";
+}
+
+<h2>@Model.Name Benchmark Results</h2>
+<div id="placeholder" style="width:100%;height:768px"></div>
+<script type="text/javascript">
+    var benchdata = @Html.Raw(Model.Data) 
+    $(function () {
+        var label = benchdata.benchmarkname;
+        var benches = benchdata.data;
+        var data = [];
+        var labels = [];
+        for (var i = 0; i < benches.length; i++) {
+            data.push([i, benches[i][1]]);
+            labels.push([i, benches[i][0]]);
+        }
+        $.plot($("#placeholder"), [
+		{
+		    label: label,
+		    data: data,
+		    bars: { show: true, align: "center" }
+		}
+	],
+	{
+	    xaxis: {
+	        ticks: labels
+	    },
+	    grid: {
+	        backgroundColor: { colors: ["#fff", "#eee"] }
+	    }
+	});
+    });
+</script>

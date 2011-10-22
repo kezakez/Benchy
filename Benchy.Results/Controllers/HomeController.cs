@@ -1,22 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Web.Configuration;
 using System.Web.Mvc;
 
 namespace Benchy.Results.Controllers
 {
     public class HomeController : Controller
     {
+        private Models.Projects projects;
+        public HomeController()
+        {
+            string dir = WebConfigurationManager.AppSettings["benchmarkDirectory"];
+            projects = new Models.Projects(dir);
+            projects.Load(); 
+        }
+
         //
         // GET: /Home/
 
         public ActionResult Index()
         {
-            var projects = new Benchy.Results.Models.Projects(@"C:\Users\keza\Dropbox\benchy\benchmarks");
-            projects.Load();
             return View(projects);
         }
 
+        public ActionResult Details(string projId, string testId)
+        {
+            var test = projects.FindItem(projId, testId);
+            return View(test);
+        }
     }
 }

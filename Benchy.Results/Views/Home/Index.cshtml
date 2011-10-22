@@ -1,23 +1,22 @@
 ﻿@model Benchy.Results.Models.Projects
 
 @{
-    ViewBag.Title = "Index.cshtml";
+    ViewBag.Title = "Project Benchmark Results";
 }
 
-<h2>Index.cshtml</h2>
+<h2>Project Benchmark Results</h2>
 
-<table>
-    <tr>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model.ProjectItems) {
-    <tr>
-        <td>
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-        </td>
-    </tr>
+<ul>
+@foreach (var projItem in Model.ProjectItems)
+{
+    <li>
+        @projItem.Name
+        <ul>
+        @foreach (var testItem in projItem.BenchmarkItems)
+        {
+            <li>@Html.ActionLink(testItem.Name, "Details", new { projId = projItem.Name, testId = testItem.Name })</li>
+        }
+        </ul>
+    </li>
 }
-
-</table>
-
+</ul>
