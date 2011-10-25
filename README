@@ -1,7 +1,6 @@
-Benchy is an open source tool for benchmarking section of code after each build.
-----
-Create a benchmark dll and add a reference to Benchy.Framework.dll.
-Write code that sets up and runs the performance critical code.
-Mark up the code with [BenchmarkFixture] [SetUp ] [TearDown] [Benchmark] like you would a unit test.
-Call Benchy.exe from your build system.
-Benchmark results are written to json files which is displayed as a bar graphs.
+Benchy is an open source .net tool for benchmarking the execution speed of sections of code after each build. Benchmarks are graphed so that changes to performance characteristics in builds can be easily visualised.
+
+Documentation: http://www.keza.net/benchy
+NuGet: http://nuget.org/List/Packages/Benchy
+Source: https://github.com/kezakez/Benchy
+License: http://creativecommons.org/licenses/by-sa/3.0/ (Creative Commons Attribution-ShareAlike 3.0 Unported License)
